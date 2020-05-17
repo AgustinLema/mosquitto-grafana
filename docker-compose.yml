@@ -1,0 +1,35 @@
+version: "3.3"
+services:
+  mosquitto:
+    image: eclipse-mosquitto
+    ports:
+        - "1883:1883"
+        - "9001:9001"
+    volumes:
+        - ./mosquitto/data:/mosquitto/data
+        - ./mosquitto/log:/mosquitto/log
+        - ./mosquitto/config:/mosquitto/config
+  mqtt-pubsub:
+    build:
+      context: ./mqtt-pubsub
+    volumes:
+        - ./mqtt-pubsub/src:/app
+    environment:
+        - PYTHONUNBUFFERED=1
+  influxdb:
+    image: influxdb:1.8
+    ports:
+        - "8086:8086"
+        - "2003:2003"
+    volumes:
+      - ./influxdb/data:/var/lib/influxdb
+      - ./influxdb/config/influxdb.conf:/etc/influxdb/influxdb.conf
+
+  grafana:
+    image: grafana/grafana:6.7.3
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/config:/etc/grafana
+      - ./grafana/lib:/var/lib/grafana
+      - ./grafana/logs:/var/log/grafana

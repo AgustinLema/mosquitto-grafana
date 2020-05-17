@@ -1,0 +1,36 @@
+1589743817: mosquitto version 1.6.9 starting
+1589743817: Config loaded from /mosquitto/config/mosquitto.conf.
+1589743817: Opening ipv4 listen socket on port 1883.
+1589743817: Opening ipv6 listen socket on port 1883.
+1589745617: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1589745617: Error saving in-memory database, unable to open /mosquitto/data/mosquitto.db.new for writing.
+1589745617: Error: Permission denied.
+1589745821: mosquitto version 1.6.9 terminating
+1589745821: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1589745821: Error saving in-memory database, unable to open /mosquitto/data/mosquitto.db.new for writing.
+1589745821: Error: Permission denied.
+1589745871: mosquitto version 1.6.9 starting
+1589745871: Config loaded from /mosquitto/config/mosquitto.conf.
+1589745871: Opening ipv4 listen socket on port 1883.
+1589745871: Opening ipv6 listen socket on port 1883.
+1589747671: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1589747671: Error saving in-memory database, unable to open /mosquitto/data/mosquitto.db.new for writing.
+1589747671: Error: Permission denied.
+1589749472: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1589749472: Error saving in-memory database, unable to open /mosquitto/data/mosquitto.db.new for writing.
+1589749472: Error: Permission denied.
+1589751273: Saving in-memory database to /mosquitto/data/mosquitto.db.
+1589751273: Error saving in-memory database, unable to open /mosquitto/data/mosquitto.db.new for writing.
+1589751273: Error: Permission denied.
+1589751633: New connection from 172.22.0.3 on port 1883.
+1589751633: New client connected from 172.22.0.3 as auto-E499EDA0-BE12-863C-D8C3-B263EFC6D5DE (p2, c1, k60).
+1589751683: New connection from 172.22.0.3 on port 1883.
+1589751683: New client connected from 172.22.0.3 as auto-C2B53056-8A0B-629C-D680-8C47D3D01022 (p2, c1, k60).
+1589751704: Socket error on client auto-C2B53056-8A0B-629C-D680-8C47D3D01022, disconnecting.
+1589751721: Socket error on client auto-E499EDA0-BE12-863C-D8C3-B263EFC6D5DE, disconnecting.
+1589751723: New connection from 172.22.0.3 on port 1883.
+1589751723: New client connected from 172.22.0.3 as auto-63EE133A-A850-A64A-720E-7E0A5C917E07 (p2, c1, k60).
+1589751733: New connection from 172.22.0.3 on port 1883.
+1589751733: New client connected from 172.22.0.3 as auto-F75CDCA8-F627-802B-609A-2E2A5FD79DDA (p2, c1, k60).
+1589751782: Socket error on client auto-F75CDCA8-F627-802B-609A-2E2A5FD79DDA, disconnecting.
+1589751786: New connection from 172.22.0.3 on port 1883.
