@@ -1,0 +1,4 @@
+mosquitto/log/
+mosquitto/data/
+grafana/lib/
+influxdb/data/

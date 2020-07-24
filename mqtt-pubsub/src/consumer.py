@@ -9,6 +9,10 @@ db_client = InfluxDBClient(host='influxdb', port=8086)
 #mqtt_host = 'broker.hivemq.com'
 mqtt_host = 'mosquitto'
 mqtt_port = 1883
+temperature_topic = 'arduino/out/temperature'
+humidity_topic = 'arduino/out/humidity'
+event_topic = 'arduino/out/event'
+
 #mqtt_host = 0
 #mqtt_port = 0
 
@@ -18,17 +22,17 @@ def initialize_db():
     db_client.switch_database(db_name)
 
 
-def write_to_db(temp):
+def write_to_db(topic, measure):
     try:
         print("Gonna send to DB")
         current_time = datetime.datetime.utcnow().isoformat()
         print("This is my time", current_time)
         json_body = [{
-            "measurement": "temperatureEvents",
+            "measurement": topic,
             "tags": {},
             "time": current_time,
             "fields": {
-                "value": float(temp),
+                "value": float(measure),
             }
         }]
         print("This is my payload", json_body)
@@ -45,16 +49,19 @@ def write_to_db(temp):
 def on_connect(client, userdata, flags, result_code):
     print('Conectado ', result_code)
 
-    client.subscribe('termometrodormitorio')
+    client.subscribe(temperature_topic)
+    client.subscribe(humidity_topic)
+    client.subscribe(event_topic)
 
 def on_message(client, userdata, msg):
     print(msg.topic, msg.payload)
-    write_to_db(msg.payload)
+    write_to_db(msg.topic, msg.payload)
 
 initialize_db()
 
 print('Comenzando con mqtt...')
-write_to_db(0.0)
+write_to_db(temperature_topic, 0.0)
+write_to_db(humidity_topic, 0.0)
 
 client = mqtt.Client()
 client.on_connect = on_connect
