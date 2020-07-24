@@ -11,7 +11,7 @@ mqtt_host = 'mosquitto'
 mqtt_port = 1883
 temperature_topic = 'arduino/out/temperature'
 humidity_topic = 'arduino/out/humidity'
-event_topic = 'arduino/out/event'
+events_topic = 'arduino/out/events'
 
 #mqtt_host = 0
 #mqtt_port = 0
@@ -23,6 +23,11 @@ def initialize_db():
 
 
 def write_to_db(topic, measure):
+    if type(measure) == str:
+        try:
+            measure = float(measure)
+        except Exception:
+            pass
     try:
         print("Gonna send to DB")
         current_time = datetime.datetime.utcnow().isoformat()
@@ -32,7 +37,7 @@ def write_to_db(topic, measure):
             "tags": {},
             "time": current_time,
             "fields": {
-                "value": float(measure),
+                "value": measure,
             }
         }]
         print("This is my payload", json_body)
@@ -51,11 +56,11 @@ def on_connect(client, userdata, flags, result_code):
 
     client.subscribe(temperature_topic)
     client.subscribe(humidity_topic)
-    client.subscribe(event_topic)
+    client.subscribe(events_topic)
 
 def on_message(client, userdata, msg):
     print(msg.topic, msg.payload)
-    write_to_db(msg.topic, msg.payload)
+    write_to_db(msg.topic, msg.payload.decode("utf-8"))
 
 initialize_db()
 
